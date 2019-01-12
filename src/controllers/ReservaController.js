@@ -34,5 +34,6 @@ module.exports = {
         await firebaseHelper.firestore
             .queryData(db, 'reserva', query)
             .then(doc => res.status(200).send(doc))
-    }
+    },
+
 };
