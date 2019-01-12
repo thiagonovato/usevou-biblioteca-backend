@@ -17,3 +17,5 @@ firebase.initializeApp(config);
 // Abrindo a conexão com o firestore
 const db = firebase.firestore();
 
+// Export dos módulos
+module.exports = db

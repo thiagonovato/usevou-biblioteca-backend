@@ -1,5 +1,6 @@
 // Invocando o package express
 const express = require('express');
+const bodyParser = require('body-parser');
 
 // Invocando o Firebase
 const firebase = require('./config/firebase')
@@ -8,6 +9,7 @@ const firebase = require('./config/firebase')
 const app = express();
 
 // Invocando o arquivo de rotas
+app.use(bodyParser.json());
 app.use(require('./routes'));
 
 // Alocando o endereço
