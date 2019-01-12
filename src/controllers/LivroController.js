@@ -10,4 +10,12 @@ module.exports = {
             .backup(db, 'books')
             .then(data => res.status(200).send(data))
     },
+
+    // Salvar um livro
+    async salvar(req, res) {
+        await firebaseHelper.firestore
+            .createNewDocument(db, 'books', req.body);
+
+        res.send(req.body)
+    }
 };
