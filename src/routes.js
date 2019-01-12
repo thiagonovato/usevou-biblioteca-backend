@@ -8,6 +8,7 @@ const routes = express.Router();
 const LivroController = require('./controllers/LivroController')
 const CartaoController = require('./controllers/CartaoController')
 const ReservaController = require('./controllers/ReservaController')
+const CategoriaController = require('./controllers/CategoriaController')
 
 //Livros
 // Lista os livros
@@ -30,7 +31,11 @@ routes.get('/reserva/:id', ReservaController.findByNumber);
 routes.get('/reservalivro/:id', ReservaController.findByIdLivro);
 // Devolver livro
 routes.get('/devolvelivro/:id', ReservaController.delete);
+// Lista de todas as reservas
+routes.get('/listareservas', ReservaController.listareserva)
 
+// Categorias
+routes.get('/findbycategoria/:id', CategoriaController.listcategoria)
 
 // Exportando para a aplicação
 module.exports = routes;

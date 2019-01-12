@@ -4,11 +4,17 @@ const firebaseHelper = require('firebase-functions-helper')
 
 // Exportando as funções das Reservas
 module.exports = {
+    // Lista todas as reservas
+    async listareserva(req, res) {
+        await firebaseHelper.firestore
+            .backup(db, 'reserva')
+            .then(data => res.status(200).send(data))
+    },
+
     // Salva uma reserva
     async save(req, res) {
         await firebaseHelper.firestore
             .createNewDocument(db, 'reserva', req.body);
-
         res.send(req.body)
     },
 

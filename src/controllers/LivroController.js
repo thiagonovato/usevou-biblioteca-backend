@@ -15,7 +15,6 @@ module.exports = {
     async save(req, res) {
         await firebaseHelper.firestore
             .createNewDocument(db, 'books', req.body);
-
         res.send(req.body)
     },
 
