@@ -7,16 +7,29 @@ const routes = express.Router();
 // Importando os Controllers
 const LivroController = require('./controllers/LivroController')
 const CartaoController = require('./controllers/CartaoController')
+const ReservaController = require('./controllers/ReservaController')
 
 //Livros
+// Lista os livros
 routes.get('/livros', LivroController.index);
-routes.post('/livros', LivroController.salvar);
+// Salva um novo livro
+routes.post('/livros', LivroController.save);
+// Consultar pelo id do livro
+routes.get('/livro/:id', LivroController.findByIdLivro);
 
 // Cartões
-routes.get('/cartao', CartaoController.index);
-routes.post('/cartao', CartaoController.save);
-//routes.get('/cartao/:id', CartaoController.find);
-routes.get('/cartao/:id', CartaoController.findByNumber)
+// Consulta reserva pelo número do cartão
+routes.get('/reservascartao/:id', CartaoController.findByNumber)
+
+// Reservas
+// Salva uma reserva
+routes.post('/reserva', ReservaController.save);
+// Consultar reserva pelo número do cartão
+routes.get('/reserva/:id', ReservaController.findByNumber);
+// Consultar pelo id do livro
+routes.get('/reservalivro/:id', ReservaController.findByIdLivro);
+// Devolver livro
+routes.get('/devolvelivro/:id', ReservaController.delete);
 
 // Exportando para a aplicação
 module.exports = routes;
